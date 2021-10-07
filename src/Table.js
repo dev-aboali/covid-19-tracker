@@ -1,12 +1,14 @@
 import React from 'react'
 import './Table.css'
 import numeral from 'numeral'
-function Table({ countries }) {
+
+
+function TableComp({ countries }) {
     return (
         <div className="table">
             {countries.map((country) => (
                 
-                <tr key={country.countryInfo._id}>
+                <tr key={country.country}>
                  
                     <td>{country.country}</td>
                     <td>
@@ -18,4 +20,4 @@ function Table({ countries }) {
     )
 }
 
-export default Table
+export default TableComp

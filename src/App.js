@@ -10,7 +10,7 @@ import {
 import InfoBox from './InfoBox'
 import Map from './Map'
 import Table from './Table'
-import { sortData, prettyPrintStat } from './util'
+import { sortData } from './util'
 import LineGraph from './LineGraph';
 import "leaflet/dist/leaflet.css";
 import numeral from 'numeral';
@@ -86,7 +86,7 @@ const App = () => {
                                 <MenuItem value="worldwide">Worldwide</MenuItem>
                                 {
                                     countries.map( country => (
-                                        <MenuItem value={country.value}>{country.name}</MenuItem>
+                                        <MenuItem key={country.name} value={country.value}>{country.name}</MenuItem>
                                     ))
                                 }
                                 
@@ -95,19 +95,19 @@ const App = () => {
                 </div>
             
                     { countryInfo.cases && (
-                        <div className="app__stats">
+                    <div className="app__stats">
                         <InfoBox 
                         isRed
                         active= {casesType === "cases"}
                         onClick={ (e) => setCasesType('cases')} 
-                        title="Coronavirus Cases"  
-                        cases={prettyPrintStat(countryInfo.todayCases)} 
+                        title="Cases"  
+                        cases={countryInfo.todayCases} 
                         total={numeral(countryInfo.cases).format("0.0a")}
                       />
                     <InfoBox 
                         onClick={ e => setCasesType('recovered')} 
                         title="Recovered" 
-                        cases={prettyPrintStat(countryInfo.todayRecovered)} 
+                        cases={countryInfo.todayRecovered} 
                         total={numeral(countryInfo.recovered).format("0.0a")} 
                         active= {casesType === "recovered"}
                         />
@@ -115,7 +115,7 @@ const App = () => {
                         isRed 
                         onClick={ e => setCasesType('deaths')} 
                         title="Deaths" 
-                        cases={prettyPrintStat(countryInfo.todayDeaths)} 
+                        cases={countryInfo.todayDeaths} 
                         total={numeral(countryInfo.deaths).format("0.0a")} 
                         active= {casesType === "deaths"}
                         

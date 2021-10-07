@@ -26,3 +26,12 @@
   font-size: 0.8rem !important;
   margin-top: 15px !important;
 }
+
+@media (max-width: 390px) {
+  .infoBox__cases {
+    font-size: 1rem;
+  }
+  .app__header h1 {
+    font-size: 1rem;
+  }
+}
